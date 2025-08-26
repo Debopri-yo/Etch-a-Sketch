@@ -4,15 +4,31 @@ function makeboxes(n){
     container.innerHTML = "";
     for(let i=0;i<n*n;i++){
         const box = document.createElement('div');
-        box.className='cell';
-      const cellsize=(960/n);
-      box.style.width=cellsize+"px";
-      box.style.height=cellsize+"px";
-box.addEventListener("mouseover", function () {
-  box.style.backgroundColor = "black";
-});
+        box.className='cell';  
+        box.style.width = `calc(100% / ${n})`;
+        box.style.height = `calc(100% / ${n})`;
+
+        box.addEventListener("mouseover", function () {
+          const randomColor=generateRandomRGBColor();  
+          box.style.backgroundColor = randomColor;
+        });
+
         container.appendChild(box);
     }
 }
-const choice=document.getElementById("btn");
-choice.addEventListener('click',function(){n=window.prompt('enter the number of rows and columns you want'); makeboxes(n);});
+
+const choice = document.getElementById("btn");
+choice.addEventListener('click', function(){
+    n = window.prompt('Enter the number of rows and columns (0-100)');
+    if(n <= 0 || n > 100)
+        alert("Value should be between 1 - 100");
+    else
+        makeboxes(n);
+});
+makeboxes(16);
+function generateRandomRGBColor(){
+  const r=Math.floor(Math.random()*256);
+  const g=Math.floor(Math.random()*256);
+  const b=Math.floor(Math.random()*256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
