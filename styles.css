@@ -10,8 +10,6 @@
     box-sizing: border-box;
 }
 .cell{
-    height: 60px;
-    width: 60px;
     background-color: blue;
     border: 1px solid black;
 }
