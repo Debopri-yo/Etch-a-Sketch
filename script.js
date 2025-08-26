@@ -1,3 +1,4 @@
+let n;
 function makeboxes(n){
     const container = document.querySelector('#container');
     container.innerHTML = "";
@@ -13,4 +14,5 @@ box.addEventListener("mouseover", function () {
         container.appendChild(box);
     }
 }
-makeboxes(6);
+const choice=document.getElementById("btn");
+choice.addEventListener('click',function(){n=window.prompt('enter the number of rows and columns you want'); makeboxes(n);});
