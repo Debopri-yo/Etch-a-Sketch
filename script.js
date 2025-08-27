@@ -32,3 +32,11 @@ function generateRandomRGBColor(){
   const b=Math.floor(Math.random()*256);
   return `rgb(${r}, ${g}, ${b})`;
 }
+const clear = document.getElementById("clr-btn");
+clear.addEventListener('click',function(){
+       const container = document.querySelector('#container');
+       const boxes=container.querySelectorAll(".cell");
+       for(const box of boxes){
+         box.style.backgroundColor = "white";
+       }
+});
