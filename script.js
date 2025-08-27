@@ -7,10 +7,13 @@ function makeboxes(n){
         box.className='cell';  
         box.style.width = `calc(100% / ${n})`;
         box.style.height = `calc(100% / ${n})`;
+        box.dataset.darkness=0;
 
         box.addEventListener("mouseover", function () {
           const randomColor=generateRandomRGBColor();  
           box.style.backgroundColor = randomColor;
+          box.dataset.basecolor=randomColor;
+          box.dataset.darkness = Number(box.dataset.darkness) + 1;
         });
 
         container.appendChild(box);
